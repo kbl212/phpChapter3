@@ -1,12 +1,15 @@
 <html>
-    <head>
-        <title>
-            Cool Title
-        </title>
-    </head>
-    <body>
-        
-    </body>
+
+<head>
+    <title>
+        Cool Title
+    </title>
+</head>
+
+<body>
+
+</body>
+
 </html>
 
 
@@ -36,12 +39,32 @@
     echo $lowercaseString;
     echo ucfirst("<br><br>" . "testing");
 
-
-    
+//Creates new .txt file if one doesn't already exist, writes to it.
+    if (!file_exists("testfile.txt")) {
     $fh = fopen("testfile.txt", "w") or die("Failed to create file");
-    $text = "testing. HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA";
+    $text = "testing. FAIL";
 
     fwrite($fh, $text) or die("Could not write to file");
     fclose($fh);
     echo "File testfile.txt written successfully";
+    }
+    $fh = fopen("testfile.txt", 'r') or die("File does not exist or you lack permission to open it");
+    $line = fgets($fh);
+    fclose($fh);
+    echo ("<br><br>");
+    echo $line;
+   // echo file_get_contents("http://oreilly.com");
+
+
+//Executes 'dir' command on windows command line
+    $cmd = "dir";
+    exec(escapeshellcmd($cmd), $output, $status);
+    
+    if ($status) echo "Exec command failed";
+    else 
+    {
+        echo "<pre>";
+        foreach($output as $line) echo htmlspecialchars("$line\n");
+        echo "</pre>";
+    }
 ?>
