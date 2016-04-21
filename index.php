@@ -7,7 +7,15 @@
 </head>
 
 <body>
-
+    <?php
+    $names = array("Bobby", "Kyle", "Something", "Dylan");
+    for ($i = 0; $i < count($names); $i++)
+    {
+        $output = "<li>They call me " . $names[$i] . " ...clap clap</li>";
+        echo $output;
+    }
+    
+    ?>
 </body>
 
 </html>
@@ -53,7 +61,7 @@
     fclose($fh);
     echo ("<br><br>");
     echo $line;
-   // echo file_get_contents("http://oreilly.com");
+    echo file_get_contents("http://oreilly.com");
 
 
 //Executes 'dir' command on windows command line
